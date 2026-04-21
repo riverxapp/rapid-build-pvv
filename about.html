@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Restaurant Experience</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <script>
+    (function() {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = stored || (prefersDark ? 'dark' : 'light');
+      document.documentElement.classList.add(theme);
+    })();
+  </script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50 text-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100">
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 border-b border-white/20 bg-white/70 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70">
+    <nav>
+      <div class="mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-4 sm:px-6">
+        <a href="index.html" class="flex items-center gap-3 transition hover:opacity-90" aria-label="Go to homepage">
+          <svg aria-hidden="true" class="h-8 w-8 stroke-blue-500" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 12l7-7 7 7M5 10v10h14V10"/></svg>
+          <span class="font-semibold text-xl text-slate-900 dark:text-slate-100">Restaurant Experience</span>
+        </a>
+        <div class="flex items-center gap-6">
+          <a href="index.html" class="text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 font-medium">Home</a>
+          <a href="about.html" aria-current="page" class="text-blue-600 dark:text-blue-400 font-semibold" aria-label="About us page link">About Us</a>
+          <a href="README.md" class="text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 font-medium">Docs</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-6 py-16 sm:px-8 md:px-12">
+    <section aria-labelledby="about-heading" class="text-center max-w-3xl mx-auto">
+      <h1 id="about-heading" class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+        About Restaurant Experience
+      </h1>
+      <p class="text-lg text-slate-700 dark:text-slate-300 mb-8">
+        Welcome to Restaurant Experience, your ultimate app to explore, order, and savor the best culinary delights in town. We connect food lovers with top restaurants, making dining effortless, delightful, and memorable.
+      </p>
+    </section>
+
+    <section aria-labelledby="mission-heading" class="mt-16 grid gap-10 md:grid-cols-2">
+      <div>
+        <h2 id="mission-heading" class="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-3">
+          Our Mission
+        </h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          Our mission is to bring joy to every meal by bridging the gap between hungry guests and exceptional restaurants. We empower restaurants to showcase their menu treasures while providing customers with seamless ordering and personalized recommendations.
+        </p>
+      </div>
+      <div>
+        <h2 id="values-heading" class="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-3">
+          What We Value
+        </h2>
+        <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300">
+          <li><strong>Quality:</strong> Delivering accurate and fresh listings for true food enthusiasts.</li>
+          <li><strong>Accessibility:</strong> Easy-to-use interface for all users on any device.</li>
+          <li><strong>Community:</strong> Supporting local restaurants and growing food culture.</li>
+          <li><strong>Innovation:</strong> Leveraging modern tech for a smooth dining discovery experience.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="team-heading" class="mt-16 max-w-3xl mx-auto text-center">
+      <h2 id="team-heading" class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6">
+        Meet the Team
+      </h2>
+      <p class="text-lg text-slate-700 dark:text-slate-300 mb-8">
+        A passionate group of culinary enthusiasts, developers, and designers dedicated to transforming how you discover and enjoy food.
+      </p>
+      <a href="index.html" class="inline-block rounded bg-blue-600 px-6 py-3 text-white font-semibold shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition" role="button">
+        Explore Our Menu
+      </a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/20 bg-white/70 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70">
+    <div class="mx-auto max-w-[1600px] px-4 py-8 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-sm text-slate-600 dark:text-slate-400">&copy; 2024 Restaurant Experience. All rights reserved.</p>
+      <nav class="flex gap-6 text-sm">
+        <a href="index.html" class="text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">Home</a>
+        <a href="about.html" class="text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">About</a>
+        <a href="README.md" class="text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400">Documentation</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
