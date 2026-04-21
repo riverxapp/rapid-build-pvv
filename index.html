@@ -8,6 +8,13 @@
   <script>
     tailwind.config = {
       darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', 'ui-sans-serif', 'system-ui'],
+          },
+        },
+      },
     }
   </script>
   <script>
@@ -19,12 +26,12 @@
     })();
   </script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50 text-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100">
+<body class="min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50 text-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100 font-sans">
   <!-- Navbar -->
   <header class="sticky top-0 z-40 border-b border-white/20 bg-white/70 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70">
     <nav>
       <div class="mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-4 sm:px-6">
-        <a href="#hero" class="flex items-center gap-3 transition hover:opacity-90">
+        <a href="#hero" class="flex items-center gap-3 transition hover:opacity-90" aria-label="Go to hero section">
           <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500 text-white shadow-xl">
             <span class="text-sm font-bold">HS</span>
           </div>
@@ -42,27 +49,27 @@
             <svg id="icon-sun" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
             <svg id="icon-moon" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
           </button>
-          <a href="#reservation" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 px-6 py-2.5 text-sm font-semibold text-white shadow-xl transition-all duration-300 hover:scale-[1.05]">Reserve a Table</a>
+          <a href="#reservation" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 px-6 py-2.5 text-sm font-semibold text-white shadow-xl transition-all duration-300 hover:scale-[1.05] focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2">Reserve a Table</a>
         </div>
         <div class="flex items-center gap-1 md:hidden">
           <button type="button" id="theme-toggle-mobile" class="rounded-xl p-2 transition hover:bg-slate-200/50 dark:hover:bg-slate-800/60" aria-label="Toggle theme">
             <svg id="icon-sun-mobile" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
             <svg id="icon-moon-mobile" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
           </button>
-          <button type="button" id="mobile-menu-btn" class="rounded-xl p-2 transition hover:bg-slate-200/50 dark:hover:bg-slate-800/60 md:hidden" aria-label="Toggle menu">
+          <button type="button" id="mobile-menu-btn" class="rounded-xl p-2 transition hover:bg-slate-200/50 dark:hover:bg-slate-800/60 md:hidden" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
             <svg id="icon-menu" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16"/></svg>
             <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
       </div>
-      <div id="mobile-menu" class="hidden border-t border-white/20 bg-white/90 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/90 md:hidden">
+      <div id="mobile-menu" class="hidden border-t border-white/20 bg-white/90 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/90 md:hidden" role="region" aria-label="Mobile menu">
         <div class="mx-auto flex max-w-[1600px] flex-col gap-2 px-4 py-3 sm:px-6">
-          <a href="#menu" class="mobile-link rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800">Menu</a>
-          <a href="#about" class="mobile-link rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800">About</a>
-          <a href="#services" class="mobile-link rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800">Services</a>
-          <a href="#testimonials" class="mobile-link rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800">Testimonials</a>
-          <a href="#faq" class="mobile-link rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800">FAQ</a>
-          <a href="#reservation" class="mobile-link mt-1 inline-flex justify-center rounded-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white">Reserve a Table</a>
+          <a href="#menu" class="mobile-link rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">Menu</a>
+          <a href="#about" class="mobile-link rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">About</a>
+          <a href="#services" class="mobile-link rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">Services</a>
+          <a href="#testimonials" class="mobile-link rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">Testimonials</a>
+          <a href="#faq" class="mobile-link rounded-lg px-2 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">FAQ</a>
+          <a href="#reservation" class="mobile-link mt-1 inline-flex justify-center rounded-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">Reserve a Table</a>
         </div>
       </div>
     </nav>
@@ -71,64 +78,64 @@
   <main>
     <div class="mx-auto w-full max-w-[1600px] px-4 sm:px-6">
       <!-- Hero -->
-      <section id="hero" class="py-16 sm:py-28">
+      <section id="hero" class="py-16 sm:py-28" aria-label="Hero section with welcome message and call to action">
         <div class="grid items-center gap-16 lg:grid-cols-2">
           <div>
-            <span class="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-1.5 text-[11px] sm:text-sm font-semibold uppercase tracking-wider text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300">Welcome to HTML Starter</span>
+            <span class="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-1.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300">Welcome to HTML Starter</span>
             <h1 class="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl text-slate-900 dark:text-slate-100">Experience the Taste of Excellence</h1>
             <p class="mt-6 max-w-xl text-lg text-slate-600 dark:text-slate-300">Discover our chef-crafted menu blending tradition and innovation. Enjoy a memorable dining experience in a warm and elegant setting.</p>
             <div class="mt-8 flex flex-wrap items-center gap-4">
-              <a href="#reservation" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-xl transition-all duration-300 hover:scale-[1.05]">Reserve a Table</a>
-              <a href="#menu" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold transition hover:bg-white/60 dark:border-slate-700 dark:hover:bg-slate-800/40">View Menu <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M12.293 5.293a1 1 0 011.414 0L17 8.586a2 2 0 010 2.828l-3.293 3.293a1 1 0 01-1.414-1.414L13.586 11H5a1 1 0 110-2h8.586l-1.293-1.293a1 1 0 010-1.414z"/></svg></a>
+              <a href="#reservation" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-xl transition-all duration-300 hover:scale-[1.05] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Reserve a Table</a>
+              <a href="#menu" class="inline-flex items-center gap-2 rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold transition hover:bg-white/60 dark:border-slate-700 dark:hover:bg-slate-800/40 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">View Menu <svg class="h-4 w-4" aria-hidden="true" focusable="false" viewBox="0 0 20 20" fill="currentColor" role="img"><path d="M12.293 5.293a1 1 0 011.414 0L17 8.586a2 2 0 010 2.828l-3.293 3.293a1 1 0 01-1.414-1.414L13.586 11H5a1 1 0 110-2h8.586l-1.293-1.293a1 1 0 010-1.414z"/></svg></a>
             </div>
             <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
               <span>No credit card required</span>
-              <span class="hidden h-1 w-1 rounded-full bg-slate-300 sm:inline-block"></span>
+              <span class="hidden h-1 w-1 rounded-full bg-slate-300 sm:inline-block" aria-hidden="true"></span>
               <span>Book your spot in under 2 minutes</span>
             </div>
           </div>
-          <div class="relative">
+          <div class="relative" aria-hidden="true">
             <div class="overflow-hidden rounded-3xl border border-white/30 bg-white/70 shadow-2xl backdrop-blur-xl dark:border-slate-700/50 dark:bg-slate-900/60">
-              <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1200&q=80" alt="Restaurant interior" class="h-full w-full object-cover rounded-3xl">
+              <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1200&q=80" alt="Restaurant interior with elegant seating" class="h-full w-full object-cover rounded-3xl" loading="lazy" decoding="async" width="600" height="450">
             </div>
           </div>
         </div>
       </section>
 
       <!-- Menu Highlights -->
-      <section id="menu" class="py-10 sm:py-24">
+      <section id="menu" class="py-10 sm:py-24" aria-labelledby="menu-heading">
         <div class="mx-auto max-w-3xl text-center">
-          <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">Featured Dishes</h2>
+          <h2 id="menu-heading" class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">Featured Dishes</h2>
           <p class="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-400">A selection of our chef's specialties crafted with fresh, locally sourced ingredients.</p>
         </div>
         <div class="mt-12 grid gap-8 md:grid-cols-3">
-          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50">
-            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80" alt="Grilled Salmon" class="h-48 w-full rounded-xl object-cover">
-            <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Grilled Salmon</h3>
+          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50" aria-labelledby="dish1-title" role="region">
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80" alt="Grilled Salmon with seasonal vegetables and lemon dill sauce" class="h-48 w-full rounded-xl object-cover" loading="lazy" decoding="async" width="400" height="300">
+            <h3 id="dish1-title" class="text-lg font-semibold text-slate-900 dark:text-slate-50">Grilled Salmon</h3>
             <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">Perfectly seared salmon fillet served with seasonal vegetables and a lemon dill sauce.</p>
           </article>
-          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50">
-            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80" alt="Margherita Pizza" class="h-48 w-full rounded-xl object-cover">
-            <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Margherita Pizza</h3>
+          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50" aria-labelledby="dish2-title" role="region">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80" alt="Margherita Pizza topped with fresh mozzarella, basil, and tomato sauce" class="h-48 w-full rounded-xl object-cover" loading="lazy" decoding="async" width="400" height="300">
+            <h3 id="dish2-title" class="text-lg font-semibold text-slate-900 dark:text-slate-50">Margherita Pizza</h3>
             <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">Traditional Italian pizza topped with fresh mozzarella, basil, and tomato sauce.</p>
           </article>
-          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50">
-            <img src="https://images.unsplash.com/photo-1600891964339-239c4d3aaa5e?auto=format&fit=crop&w=400&q=80" alt="Chocolate Dessert" class="h-48 w-full rounded-xl object-cover">
-            <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-50">Chocolate Mousse</h3>
+          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50" aria-labelledby="dish3-title" role="region">
+            <img src="https://images.unsplash.com/photo-1600891964339-239c4d3aaa5e?auto=format&fit=crop&w=400&q=80" alt="Chocolate Mousse dessert topped with whipped cream and fresh berries" class="h-48 w-full rounded-xl object-cover" loading="lazy" decoding="async" width="400" height="300">
+            <h3 id="dish3-title" class="text-lg font-semibold text-slate-900 dark:text-slate-50">Chocolate Mousse</h3>
             <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">Rich and creamy chocolate mousse topped with whipped cream and fresh berries.</p>
           </article>
         </div>
       </section>
 
       <!-- About -->
-      <section id="about" class="border-t border-white/20 py-10 sm:py-24 dark:border-slate-800/60">
+      <section id="about" class="border-t border-white/20 py-10 sm:py-24 dark:border-slate-800/60" aria-labelledby="about-heading">
         <div class="mx-auto max-w-3xl text-center">
-          <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">Our Story</h2>
+          <h2 id="about-heading" class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">Our Story</h2>
           <p class="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-400">Founded in 2010, HTML Starter Restaurant is dedicated to bringing you exquisite flavors and a welcoming atmosphere. Our chefs combine years of passion and skills to deliver dishes made from the freshest ingredients.</p>
         </div>
         <div class="mt-10 flex flex-col gap-8 sm:flex-row sm:justify-center sm:gap-12">
           <div class="sm:w-1/2">
-            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Chef in kitchen" class="rounded-3xl object-cover w-full h-64">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Chef cooking in kitchen" class="rounded-3xl object-cover w-full h-64" loading="lazy" decoding="async" width="600" height="384">
           </div>
           <div class="sm:w-1/2 flex flex-col justify-center">
             <p class="text-slate-700 dark:text-slate-300">From farm to table, our commitment to quality is paramount. Join us and savor our signature dishes in a vibrant and cozy setting.</p>
@@ -137,76 +144,85 @@
       </section>
 
       <!-- Services -->
-      <section id="services" class="py-10 sm:py-24">
+      <section id="services" class="py-10 sm:py-24" aria-labelledby="services-heading">
         <div class="mx-auto max-w-3xl text-center">
-          <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">Our Services</h2>
+          <h2 id="services-heading" class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">Our Services</h2>
           <p class="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-400">More than just dining, we offer a range of services designed to enhance your experience.</p>
         </div>
         <div class="mt-12 grid gap-6 md:grid-cols-3">
-          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50">
-            <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors group-hover:bg-indigo-100 dark:bg-indigo-900/50 dark:text-indigo-400 dark:group-hover:bg-indigo-900/70">
+          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50" aria-labelledby="service1-title" role="region">
+            <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors group-hover:bg-indigo-100 dark:bg-indigo-900/50 dark:text-indigo-400 dark:group-hover:bg-indigo-900/70" aria-hidden="true">
               <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18M7 14h10M4 18h16"/></svg>
             </div>
-            <h3 class="text-base font-semibold text-slate-900 dark:text-slate-50">Dine-In Experience</h3>
+            <h3 id="service1-title" class="text-base font-semibold text-slate-900 dark:text-slate-50">Dine-In Experience</h3>
             <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">Enjoy a comfortable and elegant atmosphere with attentive service to make your meal unforgettable.</p>
           </article>
-          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50">
-            <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors group-hover:bg-indigo-100 dark:bg-indigo-900/50 dark:text-indigo-400 dark:group-hover:bg-indigo-900/70">
+          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50" aria-labelledby="service2-title" role="region">
+            <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors group-hover:bg-indigo-100 dark:bg-indigo-900/50 dark:text-indigo-400 dark:group-hover:bg-indigo-900/70" aria-hidden="true">
               <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/></svg>
             </div>
-            <h3 class="text-base font-semibold text-slate-900 dark:text-slate-50">Takeout & Delivery</h3>
+            <h3 id="service2-title" class="text-base font-semibold text-slate-900 dark:text-slate-50">Takeout & Delivery</h3>
             <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">Craving our dishes at home? Order online for fast takeout or delivery right to your doorstep.</p>
           </article>
-          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50">
-            <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors group-hover:bg-indigo-100 dark:bg-indigo-900/50 dark:text-indigo-400 dark:group-hover:bg-indigo-900/70">
+          <article class="group flex flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50" aria-labelledby="service3-title" role="region">
+            <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors group-hover:bg-indigo-100 dark:bg-indigo-900/50 dark:text-indigo-400 dark:group-hover:bg-indigo-900/70" aria-hidden="true">
               <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18m9-9H3"/></svg>
             </div>
-            <h3 class="text-base font-semibold text-slate-900 dark:text-slate-50">Private Events</h3>
+            <h3 id="service3-title" class="text-base font-semibold text-slate-900 dark:text-slate-50">Private Events</h3>
             <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">Host your special occasions with us. Customized menus and dedicated space to make your event memorable.</p>
           </article>
         </div>
       </section>
 
       <!-- Reservation CTA -->
-      <section id="reservation" class="py-8 sm:py-24">
+      <section id="reservation" class="py-8 sm:py-24" aria-labelledby="reservation-heading">
         <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 px-8 py-14 text-center text-white shadow-2xl sm:px-12">
           <div class="absolute -left-12 -top-12 h-32 w-32 rounded-full bg-white/10"></div>
           <div class="absolute -bottom-16 -right-16 h-40 w-40 rounded-full bg-white/10"></div>
           <div class="relative mx-auto max-w-2xl">
-            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Book your table today</h2>
+            <h2 id="reservation-heading" class="text-3xl font-bold tracking-tight sm:text-4xl">Book your table today</h2>
             <p class="mt-4 text-base text-blue-100/90 sm:text-lg">Enjoy a seamless reservation experience and secure your spot at HTML Starter.</p>
             <div class="mt-6 flex justify-center">
-              <a href="#hero" class="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-base font-semibold text-blue-700 shadow-lg transition hover:scale-105 hover:shadow-xl">Make a Reservation</a>
+              <a href="#hero" class="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-base font-semibold text-blue-700 shadow-lg transition hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-white/60">Make a Reservation</a>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Testimonials -->
-      <section id="testimonials" class="py-8 sm:py-24">
+      <section id="testimonials" class="py-8 sm:py-24" aria-labelledby="testimonials-heading">
         <div class="mx-auto max-w-3xl text-center">
-          <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">What Our Customers Say</h2>
+          <h2 id="testimonials-heading" class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">What Our Customers Say</h2>
           <p class="mt-3 text-sm text-slate-600 sm:text-base dark:text-slate-400">Real experiences from diners who love our food and service.</p>
         </div>
         <div class="mt-10 grid gap-6 md:grid-cols-3">
-          <article class="flex h-full flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50">
+          <article class="flex h-full flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50" role="region" aria-label="Testimonial from Emily R.">
             <div class="flex items-center gap-3">
-              <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=120&q=80" alt="Emily R." class="h-10 w-10 rounded-full object-cover">
-              <div class="text-left"><div class="text-sm font-semibold text-slate-900 dark:text-slate-50">Emily R.</div><div class="text-xs text-slate-500 dark:text-slate-400">Food Enthusiast</div></div>
+              <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=120&q=80" alt="Photo of Emily R." class="h-10 w-10 rounded-full object-cover" loading="lazy" decoding="async" width="40" height="40">
+              <div class="text-left">
+                <div class="text-sm font-semibold text-slate-900 dark:text-slate-50">Emily R.</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400">Food Enthusiast</div>
+              </div>
             </div>
             <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">"The best dining experience I've had in years! The flavors were exquisite and the staff was incredibly attentive."</p>
           </article>
-          <article class="flex h-full flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50">
+          <article class="flex h-full flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50" role="region" aria-label="Testimonial from Michael T.">
             <div class="flex items-center gap-3">
-              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=120&q=80" alt="Michael T." class="h-10 w-10 rounded-full object-cover">
-              <div class="text-left"><div class="text-sm font-semibold text-slate-900 dark:text-slate-50">Michael T.</div><div class="text-xs text-slate-500 dark:text-slate-400">Local Guide</div></div>
+              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=120&q=80" alt="Photo of Michael T." class="h-10 w-10 rounded-full object-cover" loading="lazy" decoding="async" width="40" height="40">
+              <div class="text-left">
+                <div class="text-sm font-semibold text-slate-900 dark:text-slate-50">Michael T.</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400">Local Guide</div>
+              </div>
             </div>
             <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">"Amazing variety and quality. Perfect for family dinners and special occasions. Highly recommend the grilled salmon."</p>
           </article>
-          <article class="flex h-full flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50">
+          <article class="flex h-full flex-col gap-4 rounded-2xl border border-white/30 bg-white/70 p-6 shadow-lg backdrop-blur-sm transition hover:border-indigo-200/60 hover:shadow-xl dark:border-slate-700/50 dark:bg-slate-900/60 dark:hover:border-indigo-800/50" role="region" aria-label="Testimonial from Sophia L.">
             <div class="flex items-center gap-3">
-              <img src="https://images.unsplash.com/photo-1508214751195-cddf16d7e100?auto=format&fit=crop&w=120&q=80" alt="Sophia L." class="h-10 w-10 rounded-full object-cover">
-              <div class="text-left"><div class="text-sm font-semibold text-slate-900 dark:text-slate-50">Sophia L.</div><div class="text-xs text-slate-500 dark:text-slate-400">Food Blogger</div></div>
+              <img src="https://images.unsplash.com/photo-1508214751195-cddf16d7e100?auto=format&fit=crop&w=120&q=80" alt="Photo of Sophia L." class="h-10 w-10 rounded-full object-cover" loading="lazy" decoding="async" width="40" height="40">
+              <div class="text-left">
+                <div class="text-sm font-semibold text-slate-900 dark:text-slate-50">Sophia L.</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400">Food Blogger</div>
+              </div>
             </div>
             <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">"Excellent service and atmosphere. The private event space was perfect for our celebration."</p>
           </article>
@@ -214,27 +230,27 @@
       </section>
 
       <!-- FAQ -->
-      <section id="faq" class="border-y border-white/20 py-8 sm:py-20 dark:border-slate-800/60">
+      <section id="faq" class="border-y border-white/20 py-8 sm:py-20 dark:border-slate-800/60" aria-labelledby="faq-heading">
         <div class="mx-auto max-w-3xl text-center">
-          <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">Frequently Asked Questions</h2>
+          <h2 id="faq-heading" class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl">Frequently Asked Questions</h2>
           <p class="mt-3 text-sm text-slate-600 sm:text-base dark:text-slate-400">Quick answers to common inquiries about our restaurant and services.</p>
         </div>
-        <div class="mx-auto mt-10 max-w-3xl space-y-3">
-          <div class="faq-item overflow-hidden rounded-2xl border border-white/30 bg-white/70 dark:border-slate-700/50 dark:bg-slate-900/60">
-            <button type="button" class="faq-btn flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-slate-900 dark:text-slate-50 sm:px-5 sm:py-4">Do you offer vegetarian or vegan options?<span class="faq-icon ml-4 text-slate-400 transition-transform"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 9l-7 7-7-7"/></svg></span></button>
-            <div class="faq-content hidden border-t border-slate-100 px-4 pb-4 pt-2 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400 sm:px-5">Yes, our menu includes a variety of vegetarian and vegan dishes made from fresh, seasonal ingredients.</div>
+        <div class="mx-auto mt-10 max-w-3xl space-y-3" role="list">
+          <div class="faq-item overflow-hidden rounded-2xl border border-white/30 bg-white/70 dark:border-slate-700/50 dark:bg-slate-900/60" role="listitem">
+            <button type="button" class="faq-btn flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-slate-900 dark:text-slate-50 sm:px-5 sm:py-4" aria-expanded="false" aria-controls="faq1-content" id="faq1-btn">Do you offer vegetarian or vegan options?<span class="faq-icon ml-4 text-slate-400 transition-transform"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 9l-7 7-7-7"/></svg></span></button>
+            <div class="faq-content hidden border-t border-slate-100 px-4 pb-4 pt-2 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400 sm:px-5" id="faq1-content" role="region" aria-labelledby="faq1-btn">Yes, our menu includes a variety of vegetarian and vegan dishes made from fresh, seasonal ingredients.</div>
           </div>
-          <div class="faq-item overflow-hidden rounded-2xl border border-white/30 bg-white/70 dark:border-slate-700/50 dark:bg-slate-900/60">
-            <button type="button" class="faq-btn flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-slate-900 dark:text-slate-50 sm:px-5 sm:py-4">Can I make a reservation online?<span class="faq-icon ml-4 text-slate-400 transition-transform"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 9l-7 7-7-7"/></svg></span></button>
-            <div class="faq-content hidden border-t border-slate-100 px-4 pb-4 pt-2 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400 sm:px-5">Absolutely! Use the reservation button above to book your table quickly and securely online.</div>
+          <div class="faq-item overflow-hidden rounded-2xl border border-white/30 bg-white/70 dark:border-slate-700/50 dark:bg-slate-900/60" role="listitem">
+            <button type="button" class="faq-btn flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-slate-900 dark:text-slate-50 sm:px-5 sm:py-4" aria-expanded="false" aria-controls="faq2-content" id="faq2-btn">Can I make a reservation online?<span class="faq-icon ml-4 text-slate-400 transition-transform"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 9l-7 7-7-7"/></svg></span></button>
+            <div class="faq-content hidden border-t border-slate-100 px-4 pb-4 pt-2 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400 sm:px-5" id="faq2-content" role="region" aria-labelledby="faq2-btn">Absolutely! Use the reservation button above to book your table quickly and securely online.</div>
           </div>
-          <div class="faq-item overflow-hidden rounded-2xl border border-white/30 bg-white/70 dark:border-slate-700/50 dark:bg-slate-900/60">
-            <button type="button" class="faq-btn flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-slate-900 dark:text-slate-50 sm:px-5 sm:py-4">Do you offer catering or private events?<span class="faq-icon ml-4 text-slate-400 transition-transform"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 9l-7 7-7-7"/></svg></span></button>
-            <div class="faq-content hidden border-t border-slate-100 px-4 pb-4 pt-2 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400 sm:px-5">Yes, we offer catering services and private event hosting. Contact us for personalized arrangements.</div>
+          <div class="faq-item overflow-hidden rounded-2xl border border-white/30 bg-white/70 dark:border-slate-700/50 dark:bg-slate-900/60" role="listitem">
+            <button type="button" class="faq-btn flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-slate-900 dark:text-slate-50 sm:px-5 sm:py-4" aria-expanded="false" aria-controls="faq3-content" id="faq3-btn">Do you offer catering or private events?<span class="faq-icon ml-4 text-slate-400 transition-transform"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 9l-7 7-7-7"/></svg></span></button>
+            <div class="faq-content hidden border-t border-slate-100 px-4 pb-4 pt-2 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400 sm:px-5" id="faq3-content" role="region" aria-labelledby="faq3-btn">Yes, we offer catering services and private event hosting. Contact us for personalized arrangements.</div>
           </div>
-          <div class="faq-item overflow-hidden rounded-2xl border border-white/30 bg-white/70 dark:border-slate-700/50 dark:bg-slate-900/60">
-            <button type="button" class="faq-btn flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-slate-900 dark:text-slate-50 sm:px-5 sm:py-4">What safety measures do you follow?<span class="faq-icon ml-4 text-slate-400 transition-transform"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 9l-7 7-7-7"/></svg></span></button>
-            <div class="faq-content hidden border-t border-slate-100 px-4 pb-4 pt-2 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400 sm:px-5">We follow all local health guidelines, including enhanced sanitation, staff health checks, and socially distanced seating.</div>
+          <div class="faq-item overflow-hidden rounded-2xl border border-white/30 bg-white/70 dark:border-slate-700/50 dark:bg-slate-900/60" role="listitem">
+            <button type="button" class="faq-btn flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-slate-900 dark:text-slate-50 sm:px-5 sm:py-4" aria-expanded="false" aria-controls="faq4-content" id="faq4-btn">What safety measures do you follow?<span class="faq-icon ml-4 text-slate-400 transition-transform"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 9l-7 7-7-7"/></svg></span></button>
+            <div class="faq-content hidden border-t border-slate-100 px-4 pb-4 pt-2 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400 sm:px-5" id="faq4-content" role="region" aria-labelledby="faq4-btn">We follow all local health guidelines, including enhanced sanitation, staff health checks, and socially distanced seating.</div>
           </div>
         </div>
       </section>
@@ -248,6 +264,7 @@
         <div class="flex items-center gap-2"><span class="text-base font-semibold text-slate-900 dark:text-slate-50">HTML Starter</span><span class="text-xs text-slate-400 dark:text-slate-500">Restaurant & Dining</span></div>
         <p class="max-w-md text-xs text-slate-500 dark:text-slate-400">HTML Starter brings you culinary delights and exceptional hospitality for every occasion.</p>
         <p class="text-xs text-slate-400 dark:text-slate-500">© <span id="year"></span> HTML Starter Inc. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
@@ -274,12 +291,14 @@
     btn.addEventListener('click', () => {
       const isOpen = !menu.classList.contains('hidden');
       menu.classList.toggle('hidden', isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
       if (iconMenu) iconMenu.classList.toggle('hidden', !isOpen);
       if (iconClose) iconClose.classList.toggle('hidden', isOpen);
     });
     menu.querySelectorAll('.mobile-link').forEach((link) => {
       link.addEventListener('click', () => {
         menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
         if (iconMenu) iconMenu.classList.remove('hidden');
         if (iconClose) iconClose.classList.add('hidden');
       });
@@ -338,12 +357,14 @@
       const icon = item.querySelector('.faq-icon');
       if (!btn || !content) return;
       btn.addEventListener('click', () => {
-        const isOpen = !content.classList.contains('hidden');
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
         document.querySelectorAll('.faq-content').forEach((c) => c.classList.add('hidden'));
         document.querySelectorAll('.faq-icon').forEach((i) => i.classList.remove('rotate-180'));
+        document.querySelectorAll('.faq-btn').forEach((b) => b.setAttribute('aria-expanded', 'false'));
         if (!isOpen) {
           content.classList.remove('hidden');
           if (icon) icon.classList.add('rotate-180');
+          btn.setAttribute('aria-expanded', 'true');
         }
       });
     });
