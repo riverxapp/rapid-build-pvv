@@ -1,1 +1,498 @@
-NO_CODE_OUTPUT
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A warm, modern restaurant landing page featuring chef-driven dishes, story, hours, and reservations.">
+  <title>Harvest Table Bistro</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #111827;
+      --card: #1f2937;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #f59e0b;
+      --accent-2: #22c55e;
+      --line: rgba(255, 255, 255, 0.12);
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(245, 158, 11, 0.18), transparent 35%),
+        linear-gradient(180deg, #020617 0%, var(--bg) 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(100% - 2rem, var(--max));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      padding: 0.75rem 1rem;
+      background: #fff;
+      color: #000;
+      z-index: 1000;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(2, 6, 23, 0.8);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 72px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 4.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: 999px;
+      color: #ffd089;
+      background: rgba(245, 158, 11, 0.12);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.15;
+      margin: 0 0 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      max-width: 12ch;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 60ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:hover,
+    .btn:focus {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #111827;
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      border-radius: 1.5rem;
+      padding: 1.25rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-image {
+      min-height: 320px;
+      border-radius: 1rem;
+      background:
+        linear-gradient(rgba(17, 24, 39, 0.15), rgba(17, 24, 39, 0.7)),
+        url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80') center/cover;
+      display: flex;
+      align-items: end;
+      padding: 1.25rem;
+    }
+
+    .hero-note {
+      background: rgba(2, 6, 23, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 1rem;
+      max-width: 20rem;
+    }
+
+    .hero-note strong {
+      color: #fff;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-header {
+      max-width: 48rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+    }
+
+    .menu-item p,
+    .story p,
+    .contact p,
+    .hours li,
+    footer p {
+      color: var(--muted);
+    }
+
+    .menu-item .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .price {
+      color: #ffd089;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .story-grid,
+    .contact-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .info-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .info-list li {
+      padding: 0.95rem 1rem;
+      border-radius: 0.9rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+    }
+
+    .cta {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(34, 197, 94, 0.12));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cta-box {
+      display: grid;
+      gap: 1rem;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid var(--line);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid var(--line);
+      background: rgba(2, 6, 23, 0.6);
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    @media (min-width: 720px) {
+      .hero-grid,
+      .story-grid,
+      .contact-grid,
+      .cta-box {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <div class="container nav" aria-label="Primary">
+      <a class="brand" href="#home">Harvest <span>Table</span> Bistro</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#hours">Hours</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#reserve">Reserve</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Seasonal dining, warm hospitality</span>
+          <h1>Fresh ingredients, memorable evenings.</h1>
+          <p class="lead">Harvest Table Bistro is a neighborhood restaurant serving chef-driven plates, handcrafted cocktails, and a welcoming dining experience designed for date nights, family gatherings, and celebrations.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#reserve">Reserve a Table</a>
+            <a class="btn btn-secondary" href="#menu">View Highlights</a>
+          </div>
+          <p class="lead">Open daily for lunch and dinner. Walk-ins welcome when available.</p>
+        </div>
+        <div class="hero-card" aria-label="Featured dining image and highlights">
+          <div class="hero-image">
+            <div class="hero-note">
+              <strong>Tonight’s Special</strong>
+              Seared salmon with citrus glaze, roasted vegetables, and herb risotto.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured dishes</h2>
+          <p>Explore a few guest favorites from our seasonal menu, made fresh with locally sourced produce and premium ingredients.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card menu-item">
+            <div class="meta">
+              <h3>Wood-Fired Margherita Pizza</h3>
+              <span class="price">$18</span>
+            </div>
+            <p>San Marzano tomato, fresh mozzarella, basil, and olive oil on a crisp sourdough crust.</p>
+          </article>
+          <article class="card menu-item">
+            <div class="meta">
+              <h3>Herb-Roasted Chicken</h3>
+              <span class="price">$24</span>
+            </div>
+            <p>Slow-roasted with garlic, lemon, and rosemary, served with market vegetables and potatoes.</p>
+          </article>
+          <article class="card menu-item">
+            <div class="meta">
+              <h3>Chocolate Hazelnut Tart</h3>
+              <span class="price">$12</span>
+            </div>
+            <p>Silky ganache, toasted hazelnut crust, and whipped cream finished with sea salt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="container story-grid">
+        <div class="story">
+          <div class="section-header">
+            <h2>Our story</h2>
+            <p>Built around the idea that great food should feel both refined and comforting.</p>
+          </div>
+          <p>Founded by a small team of chefs and hosts, Harvest Table Bistro was created to bring honest cooking and genuine hospitality together. Our menu changes with the season, highlighting produce from trusted farms and bold flavors that celebrate simple ingredients done well.</p>
+        </div>
+        <div class="card">
+          <h3>What you can expect</h3>
+          <ul class="info-list">
+            <li>Relaxed dining room with a modern, cozy atmosphere</li>
+            <li>Seasonal menus with vegetarian and gluten-conscious options</li>
+            <li>Friendly service for lunch, dinner, and private celebrations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="hours">
+      <div class="container">
+        <div class="section-header">
+          <h2>Opening hours</h2>
+          <p>Plan your visit with our weekly schedule below.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Monday - Thursday</h3>
+            <p>11:30 AM - 9:00 PM</p>
+          </div>
+          <div class="card">
+            <h3>Friday - Saturday</h3>
+            <p>11:30 AM - 10:30 PM</p>
+          </div>
+          <div class="card">
+            <h3>Sunday</h3>
+            <p>10:30 AM - 8:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="container contact-grid">
+        <div class="contact">
+          <div class="section-header">
+            <h2>Location & contact</h2>
+            <p>Visit us downtown or reach out for questions, large parties, and reservation assistance.</p>
+          </div>
+          <div class="card">
+            <p><strong>Address:</strong> 1420 Market Street, Suite 100, Portland, OR 97205</p>
+            <p><strong>Phone:</strong> <a href="tel:+15055551234">(505) 555-1234</a></p>
+            <p><strong>Email:</strong> <a href="mailto:hello@harvesttablebistro.com">hello@harvesttablebistro.com</a></p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Parking & access</h3>
+          <p>Street parking is available nearby, with a public garage one block east. The entrance is wheelchair accessible, and reservations can note any special seating needs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="reserve">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>Book your table today</h2>
+            <p class="lead">Reserve online or call us directly to secure your preferred dining time.</p>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="tel:+15055551234">Call Now</a>
+            <a class="btn btn-secondary" href="mailto:hello@harvesttablebistro.com">Request Reservation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <p>© 2026 Harvest Table Bistro. All rights reserved.</p>
+      <p>Fresh food. Warm service. Memorable nights.</p>
+    </div>
+  </footer>
+</body>
+</html>
