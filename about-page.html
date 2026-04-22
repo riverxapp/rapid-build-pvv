@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Restaurant Landing Page</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #111827;
+      --surface-alt: #1f2937;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #f59e0b;
+      --accent-dark: #d97706;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      --max-width: 1100px;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(245, 158, 11, 0.12), transparent 35%),
+        linear-gradient(180deg, #0b1020 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .site-header,
+    .site-footer {
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      border-bottom: none;
+    }
+
+    .container {
+      width: min(100% - 2rem, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .header-inner,
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #fb7185);
+      display: grid;
+      place-items: center;
+      color: #111827;
+      box-shadow: var(--shadow);
+      font-weight: 800;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-weight: 600;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: #111827;
+      background: var(--accent);
+      outline: none;
+    }
+
+    .hero {
+      padding: 4.5rem 0 2rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.92rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 60ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #111827;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: #fbbf24;
+    }
+
+    .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.14);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-card,
+    .content-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 1.5rem;
+    }
+
+    .hero-card .note {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .photo-placeholder {
+      min-height: 360px;
+      border-radius: calc(var(--radius) - 4px);
+      background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.7)),
+        linear-gradient(135deg, rgba(245, 158, 11, 0.65), rgba(251, 113, 133, 0.35)),
+        url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80') center/cover;
+      display: grid;
+      align-content: end;
+      padding: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .photo-placeholder strong {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .sections {
+      padding: 1rem 0 4rem;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .content-card {
+      padding: 1.5rem;
+    }
+
+    .span-6 { grid-column: span 6; }
+    .span-4 { grid-column: span 4; }
+    .span-12 { grid-column: span 12; }
+
+    .section-title {
+      font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-text,
+    .value-item p,
+    .chef-item p {
+      color: var(--muted);
+    }
+
+    .value-list,
+    .chef-list {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .value-item,
+    .chef-item {
+      padding: 1rem;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .value-item h3,
+    .chef-item h3 {
+      margin-bottom: 0.35rem;
+      font-size: 1.05rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .team-member {
+      padding: 1rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      margin: 0 auto 0.85rem;
+      background: linear-gradient(135deg, rgba(245,158,11,0.9), rgba(251,113,133,0.85));
+      display: grid;
+      place-items: center;
+      color: #111827;
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    .site-footer p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .span-6,
+      .span-4,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner,
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        gap: 0.5rem;
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Return to home page">
+        <span class="brand-mark">R</span>
+        <span>Restaurant Landing Page</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html" aria-current="page">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">About Us</div>
+          <h1>Crafting memorable dining experiences, one plate at a time.</h1>
+          <p class="lead">
+            We bring together seasonal ingredients, thoughtful hospitality, and a warm atmosphere to create meals that feel both elevated and welcoming.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="index.html">Back to Home</a>
+            <a class="btn btn-secondary" href="#our-story">Learn Our Story</a>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="Restaurant overview">
+          <div class="photo-placeholder" role="img" aria-label="Chef preparing a dish in the kitchen">
+            <strong>Fresh. Local. Seasonal.</strong>
+            <span>Modern cuisine inspired by classic flavors and shared tables.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sections">
+      <div class="container">
+        <div class="section-grid">
+          <article class="content-card span-6" id="our-story">
+            <h2 class="section-title">Our Story</h2>
+            <p class="section-text">
+              What began as a small family kitchen has grown into a neighborhood restaurant with a simple philosophy: serve food we'd be proud to share with our own family. From the first recipe to today's seasonal menu, our focus has stayed the same—quality ingredients, careful preparation, and genuine care.
+            </p>
+            <p class="section-text">
+              Every dish reflects that journey, combining comfort and creativity in a setting designed to feel relaxed, inviting, and special.
+            </p>
+          </article>
+
+          <article class="content-card span-6" id="mission-values">
+            <h2 class="section-title">Mission &amp; Values</h2>
+            <div class="value-list">
+              <div class="value-item">
+                <h3>Our Mission</h3>
+                <p>To create exceptional meals and meaningful moments through warm service, fresh ingredients, and thoughtful details.</p>
+              </div>
+              <div class="value-item">
+                <h3>Quality First</h3>
+                <p>We source seasonal produce and trusted ingredients to ensure every plate is full of flavor and consistency.</p>
+              </div>
+              <div class="value-item">
+                <h3>Hospitality Matters</h3>
+                <p>We believe dining should feel effortless, welcoming, and memorable from the first greeting to the final bite.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="content-card span-12" id="team">
+            <h2 class="section-title">Meet Our Chef Team</h2>
+            <p class="section-text">
+              Behind every menu is a passionate team dedicated to flavor, presentation, and service.
+            </p>
+
+            <div class="team-grid">
+              <div class="team-member">
+                <div class="avatar" aria-hidden="true">AC</div>
+                <h3>Chef Amelia Carter</h3>
+                <p>Executive Chef</p>
+              </div>
+              <div class="team-member">
+                <div class="avatar" aria-hidden="true">JM</div>
+                <h3>Chef Julian Morgan</h3>
+                <p>Sous Chef</p>
+              </div>
+              <div class="team-member">
+                <div class="avatar" aria-hidden="true">SP</div>
+                <h3>Chef Sofia Patel</h3>
+                <p>Pastry Chef</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Restaurant Landing Page. All rights reserved.</p>
+      <nav class="nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
