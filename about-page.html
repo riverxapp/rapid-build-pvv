@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Restaurant Landing Page</title>
   <style>
     :root {
@@ -351,7 +349,7 @@
     }
   </style>
 </head>
-<body>
+
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Return to home page">
@@ -361,7 +359,10 @@
       <nav class="nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="menu.html">Menu</a>
-        <a href="about.html" aria-current="page">About</a>
+        <a href="about-page.html" aria-current="page">About</a>
+        <a href="#offerings">Offerings</a>
+        <a href="#story">Story</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -370,53 +371,66 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">About Us</div>
-          <h1>Crafting memorable dining experiences, one plate at a time.</h1>
+          <div class="eyebrow">About the Restaurant</div>
+          <h1>A modern restaurant app experience with menus, story, and contact details.</h1>
           <p class="lead">
-            We bring together seasonal ingredients, thoughtful hospitality, and a warm atmosphere to create meals that feel both elevated and welcoming.
+            Discover our offerings, learn the story behind our kitchen, explore a thoughtfully curated menu, and get in touch to plan your next visit.
           </p>
           <div class="actions">
-            <a class="btn btn-primary" href="index.html">Back to Home</a>
-            <a class="btn btn-secondary" href="#our-story">Learn Our Story</a>
+            <a class="btn btn-primary" href="menu.html">Explore Menu</a>
+            <a class="btn btn-secondary" href="#contact">Contact Us</a>
           </div>
         </div>
 
         <div class="hero-card" aria-label="Restaurant overview">
           <div class="photo-placeholder" role="img" aria-label="Chef preparing a dish in the kitchen">
             <strong>Fresh. Local. Seasonal.</strong>
-            <span>Modern cuisine inspired by classic flavors and shared tables.</span>
+            <span>Elegant dining, crafted with care for every guest.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="sections">
+    <section class="sections" id="offerings">
       <div class="container">
         <div class="section-grid">
-          <article class="content-card span-6" id="our-story">
+          <article class="content-card span-4">
+            <h2 class="section-title">Offerings</h2>
+            <p class="section-text">Seasonal plates, handcrafted drinks, and warm hospitality designed for everyday dining and special occasions.</p>
+          </article>
+          <article class="content-card span-4">
+            <h2 class="section-title">About the Restaurant</h2>
+            <p class="section-text">A neighborhood destination where fresh ingredients, comfort, and presentation come together in a welcoming setting.</p>
+          </article>
+          <article class="content-card span-4">
+            <h2 class="section-title">Menu</h2>
+            <p class="section-text">From starters to desserts, our menu highlights approachable favorites with a modern chef-driven touch.</p>
+          </article>
+
+          <article class="content-card span-6" id="story">
             <h2 class="section-title">Our Story</h2>
             <p class="section-text">
-              What began as a small family kitchen has grown into a neighborhood restaurant with a simple philosophy: serve food we'd be proud to share with our own family. From the first recipe to today's seasonal menu, our focus has stayed the same—quality ingredients, careful preparation, and genuine care.
+              What began as a small family kitchen has grown into a neighborhood restaurant with a simple philosophy: serve food we'd be proud to share with our own family.
             </p>
             <p class="section-text">
               Every dish reflects that journey, combining comfort and creativity in a setting designed to feel relaxed, inviting, and special.
             </p>
           </article>
 
-          <article class="content-card span-6" id="mission-values">
-            <h2 class="section-title">Mission &amp; Values</h2>
+          <article class="content-card span-6" id="contact">
+            <h2 class="section-title">Contact Page</h2>
             <div class="value-list">
               <div class="value-item">
-                <h3>Our Mission</h3>
-                <p>To create exceptional meals and meaningful moments through warm service, fresh ingredients, and thoughtful details.</p>
+                <h3>Visit Us</h3>
+                <p>123 Culinary Avenue, Downtown District</p>
               </div>
               <div class="value-item">
-                <h3>Quality First</h3>
-                <p>We source seasonal produce and trusted ingredients to ensure every plate is full of flavor and consistency.</p>
+                <h3>Call or Email</h3>
+                <p>(555) 123-4567 · hello@restaurantlandingpage.com</p>
               </div>
               <div class="value-item">
-                <h3>Hospitality Matters</h3>
-                <p>We believe dining should feel effortless, welcoming, and memorable from the first greeting to the final bite.</p>
+                <h3>Hours</h3>
+                <p>Mon–Thu: 11am–9pm · Fri–Sun: 11am–10pm</p>
               </div>
             </div>
           </article>
@@ -452,12 +466,12 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; 2026 Restaurant Landing Page. All rights reserved.</p>
+      <p>© 2026 Restaurant Landing Page. All rights reserved.</p>
       <nav class="nav" aria-label="Footer navigation">
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="about-page.html">About</a>
       </nav>
     </div>
   </footer>
-</body>
 </html>
