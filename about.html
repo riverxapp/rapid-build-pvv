@@ -8,6 +8,13 @@
   <script>
     tailwind.config = {
       darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', 'ui-sans-serif', 'system-ui'],
+          },
+        },
+      },
     }
   </script>
   <script>
@@ -19,7 +26,7 @@
     })();
   </script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50 text-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100">
+<body class="min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50 text-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100 font-sans">
   <!-- Navbar -->
   <header class="sticky top-0 z-40 border-b border-white/20 bg-white/70 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/70">
     <nav>
@@ -43,44 +50,49 @@
         About Restaurant Experience
       </h1>
       <p class="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
-        At <strong>Restaurant Experience</strong>, we believe every meal is an opportunity to create memories. Our app connects you with the finest local eateries, offering seamless ordering and curated suggestions, so you can focus on savoring unforgettable flavors. Whether you're craving classic comfort food or the latest culinary innovation, we're here to guide your journey.
-      </p>
-      <p class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-        Join thousands of food lovers who trust us to bring exceptional dining experiences right to their fingertips.
+        At <strong>Restaurant Experience</strong>, we transform dining into lasting memories. Our platform connects you with handpicked local restaurants to offer seamless ordering and inspired culinary journeys. From timeless classics to innovative dishes, we're your trusted guide to exceptional flavors.
       </p>
     </section>
 
-    <section aria-labelledby="mission-heading" class="mt-20 grid gap-12 md:grid-cols-2">
-      <div>
-        <h2 id="mission-heading" class="text-3xl font-semibold text-slate-900 dark:text-slate-100 mb-4">
-          Our Mission
-        </h2>
-        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
-          Our mission is to enrich lives through food by connecting diners and restaurants effortlessly. We strive to champion quality, convenience, and community by offering a platform that amplifies local flavors and brings joy to every meal.
-        </p>
-      </div>
-      <div>
-        <h2 id="values-heading" class="text-3xl font-semibold text-slate-900 dark:text-slate-100 mb-4">
-          What We Value
-        </h2>
-        <ul class="list-disc list-inside space-y-3 text-slate-700 dark:text-slate-300 text-base leading-relaxed">
-          <li><strong>Quality:</strong> Handpicked listings to ensure freshness and authenticity in every bite.</li>
-          <li><strong>Accessibility:</strong> Intuitive design and mobile-friendly experience for all our users.</li>
-          <li><strong>Community:</strong> Partnership with local restaurants to celebrate culinary traditions.</li>
-          <li><strong>Innovation:</strong> Embracing technology to make dining discovery seamless and inspiring.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section aria-labelledby="team-heading" class="mt-20 max-w-3xl mx-auto text-center">
-      <h2 id="team-heading" class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6">
-        Meet the Team
+    <section aria-labelledby="chef-heading" class="mt-20 max-w-4xl mx-auto">
+      <h2 id="chef-heading" class="text-3xl font-semibold text-slate-900 dark:text-slate-100 mb-6 text-center">
+        Our Chef & Kitchen Credibility
       </h2>
-      <p class="text-lg text-slate-700 dark:text-slate-300 mb-10 leading-relaxed">
-        We are a dedicated team of food enthusiasts and tech innovators, passionate about crafting an exceptional food discovery experience that brings joy, simplicity, and connection to the meal table.
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Chef in kitchen" class="rounded-lg shadow-lg w-full md:w-1/2 object-cover" />
+        <div class="text-slate-700 dark:text-slate-300 text-base leading-relaxed md:w-1/2">
+          <p class="mb-4">
+            Our culinary team is led by Chef Isabelle Moreno, a Michelin-starred chef with over 15 years in celebrated kitchens worldwide. Committed to authenticity and quality, Chef Moreno and our kitchen craft each dish with passion, blending tradition with modern techniques.
+          </p>
+          <p>
+            Every ingredient is sourced locally and seasonally to ensure freshness and sustainability, making each meal not only delicious but a mindful experience.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="values-heading" class="mt-20 max-w-4xl mx-auto">
+      <h2 id="values-heading" class="text-3xl font-semibold text-slate-900 dark:text-slate-100 mb-6 text-center">
+        Our Values
+      </h2>
+      <ul class="list-disc list-inside space-y-4 text-slate-700 dark:text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto">
+        <li><strong>Quality:</strong> We ensure every dish is crafted with the finest, freshest ingredients.</li>
+        <li><strong>Authenticity:</strong> Celebrating culinary traditions with respect and passion.</li>
+        <li><strong>Community:</strong> Building strong relationships with local farmers and restaurants.</li>
+        <li><strong>Innovation:</strong> Blending classic flavors with creative, modern culinary artistry.</li>
+        <li><strong>Sustainability:</strong> Committed to eco-friendly sourcing and reducing waste.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="reservation-heading" class="mt-20 max-w-md mx-auto text-center">
+      <h2 id="reservation-heading" class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-6">
+        Ready for an Unforgettable Meal?
+      </h2>
+      <p class="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
+        Reserve your table now and experience the culinary excellence that sets us apart.
       </p>
-      <a href="index.html" class="inline-block rounded bg-blue-600 px-6 py-3 text-white font-semibold shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition" role="button" aria-label="Explore our menu on the homepage">
-        Explore Our Menu
+      <a href="index.html" class="inline-block rounded bg-blue-600 px-8 py-3 text-white font-semibold shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition" role="button" aria-label="Make a reservation">
+        Make a Reservation
       </a>
     </section>
   </main>
